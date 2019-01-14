@@ -1,21 +1,15 @@
--------------------------------
---  "Zenburn" awesome theme  --
---    By Adrian C. (anrxc)   --
--------------------------------
-
 local current_dir = "~/.config/awesome/zenburn"
 local themes_path = require("gears.filesystem").get_themes_dir()
 local dpi = require("beautiful.xresources").apply_dpi
 
--- {{{ Main
+-- Main
 local theme = {}
 theme.wallpaper = "~/.config/awesome/wallpapers/dino-reichmuth_snowy-mountains.jpg"
--- }}}
 
--- {{{ Styles
+-- Styles
 theme.font      = "sans 8"
 
--- {{{ Colors
+-- Colors
 theme.fg_normal  = "#DCDCCC"
 theme.fg_focus   = "#F0DFAF"
 theme.fg_urgent  = "#CC9393"
@@ -23,20 +17,20 @@ theme.bg_normal  = "#3F3F3F"
 theme.bg_focus   = "#1E2320"
 theme.bg_urgent  = "#3F3F3F"
 theme.bg_systray = theme.bg_normal
--- }}}
 
--- {{{ Borders
+
+-- Borders
 theme.useless_gap   = dpi(0)
 theme.border_width  = dpi(2)
 theme.border_normal = "#3F3F3F"
 theme.border_focus  = "#6F6F6F"
 theme.border_marked = "#CC9393"
--- }}}
 
--- {{{ Titlebars
+
+-- Titlebars
 theme.titlebar_bg_focus  = "#3F3F3F"
 theme.titlebar_bg_normal = "#3F3F3F"
--- }}}
+
 
 -- There are other variable sets
 -- overriding the default one when
@@ -59,12 +53,12 @@ theme.titlebar_bg_normal = "#3F3F3F"
 --theme.border_widget    = "#3F3F3F"
 -- }}}
 
--- {{{ Mouse finder
+-- Mouse finder
 theme.mouse_finder_color = "#CC9393"
 -- mouse_finder_[timeout|animate_timeout|radius|factor]
--- }}}
 
--- {{{ Menu
+
+-- Menu
 -- Variables set for theming the menu:
 -- menu_[bg|fg]_[normal|focus]
 -- menu_[border_color|border_width]
@@ -72,19 +66,18 @@ theme.menu_height = dpi(15)
 theme.menu_width  = dpi(100)
 -- }}}
 
--- {{{ Icons
--- {{{ Taglist
+-- Icons
+-- Taglist
 theme.taglist_squares_sel   = current_dir .. "/taglist/squarefz.png"
 theme.taglist_squares_unsel = current_dir .. "/taglist/squarez.png"
 --theme.taglist_squares_resize = "false"
--- }}}
 
--- {{{ Misc
+
+-- Misc
 theme.awesome_icon           = current_dir .. "/awesome-icon.png"
 theme.menu_submenu_icon      = themes_path .. "default/submenu.png"
--- }}}
 
--- {{{ Layout
+-- Layout
 theme.layout_tile       = current_dir .. "/layouts/tile.png"
 theme.layout_tileleft   = current_dir .. "/layouts/tileleft.png"
 theme.layout_tilebottom = current_dir .. "/layouts/tilebottom.png"
@@ -101,9 +94,8 @@ theme.layout_cornernw   = current_dir .. "/layouts/cornernw.png"
 theme.layout_cornerne   = current_dir .. "/layouts/cornerne.png"
 theme.layout_cornersw   = current_dir .. "/layouts/cornersw.png"
 theme.layout_cornerse   = current_dir .. "/layouts/cornerse.png"
--- }}}
 
--- {{{ Titlebar
+-- Titlebar
 theme.titlebar_close_button_focus  = current_dir .. "/titlebar/close_focus.png"
 theme.titlebar_close_button_normal = current_dir .. "/titlebar/close_normal.png"
 
@@ -127,11 +119,7 @@ theme.titlebar_floating_button_normal_inactive = current_dir .. "/titlebar/float
 
 theme.titlebar_maximized_button_focus_active  = current_dir .. "/titlebar/maximized_focus_active.png"
 theme.titlebar_maximized_button_normal_active = current_dir .. "/titlebar/maximized_normal_active.png"
-theme.titlebar_maximized_button_focus_inactive  = current_dir .. "/titlebar/maximized_focus_inactive.png"
+theme.titlebar_maximized_button_focus_inactive = current_dir .. "/titlebar/maximized_focus_inactive.png"
 theme.titlebar_maximized_button_normal_inactive = current_dir .. "/titlebar/maximized_normal_inactive.png"
--- }}}
--- }}}
 
 return theme
-
--- vim: filetype=lua:expandtab:shiftwidth=4:tabstop=8:softtabstop=4:textwidth=80
