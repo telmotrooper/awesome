@@ -8,7 +8,7 @@ local dpi = require("beautiful.xresources").apply_dpi
 
 -- {{{ Main
 local theme = {}
-theme.wallpaper = themes_path .. "zenburn/zenburn-background.png"
+theme.wallpaper = "~/.config/awesome/wallpapers/dino-reichmuth_snowy-mountains.jpg"
 -- }}}
 
 -- {{{ Styles
