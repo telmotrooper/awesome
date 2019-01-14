@@ -1,52 +1,51 @@
 --- Separating Multiple Monitor functions as a separeted module (taken from awesome wiki)
-
-local awful     = require("awful")
-local naughty   = require("naughty")
+local awful = require("awful")
+local naughty = require("naughty")
 
 -- A path to a fancy icon
 local icon_path = ""
 
 -- Get active outputs
 local function outputs()
-   local outputs = {}
-   local xrandr = io.popen("xrandr -q --current")
+  local outputs = {}
+  local xrandr = io.popen("xrandr -q --current")
 
-   if xrandr then
-      for line in xrandr:lines() do
-         local output = line:match("^([%w-]+) connected ")
-         if output then
-            outputs[#outputs + 1] = output
-                                   end
+  if xrandr then
+    for line in xrandr:lines() do
+      local output = line:match("^([%w-]+) connected ")
+      if output then
+        outputs[#outputs + 1] = output
       end
-      xrandr:close()
-   end
+    end
+    xrandr:close()
+  end
 
-   return outputs
+  return outputs
 end
 
 local function arrange(out)
-   -- We need to enumerate all permutations of horizontal outputs.
+  -- We need to enumerate all permutations of horizontal outputs.
 
-   local choices  = {}
-   local previous = { {} }
-   for i = 1, #out do
-      -- Find all permutation of length `i`: we take the permutation
-      -- of length `i-1` and for each of them, we create new
-      -- permutations by adding each output at the end of it if it is
-      -- not already present.
-      local new = {}
-      for _, p in pairs(previous) do
-         for _, o in pairs(out) do
-            if not awful.util.table.hasitem(p, o) then
-               new[#new + 1] = awful.util.table.join(p, {o})
-            end
-         end
+  local choices  = {}
+  local previous = { {} }
+  for i = 1, #out do
+    -- Find all permutation of length `i`: we take the permutation
+    -- of length `i-1` and for each of them, we create new
+    -- permutations by adding each output at the end of it if it is
+    -- not already present.
+    local new = {}
+    for _, p in pairs(previous) do
+      for _, o in pairs(out) do
+        if not awful.util.table.hasitem(p, o) then
+          new[#new + 1] = awful.util.table.join(p, {o})
+        end
       end
-      choices = awful.util.table.join(choices, new)
-      previous = new
-   end
+    end
+    choices = awful.util.table.join(choices, new)
+    previous = new
+  end
 
-   return choices
+  return choices
 end
 
 -- Build available choices
