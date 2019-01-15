@@ -31,7 +31,7 @@ require("awful.hotkeys_popup.keys")
 if awesome.startup_errors then
   naughty.notify({
     preset = naughty.config.presets.critical,
-    title = "Oops, there were errors during startup!",
+    title = "ERROR",
     text = awesome.startup_errors
   })
 end
@@ -113,9 +113,15 @@ myawesomemenu = {
    { "quit", function() awesome.quit() end }
 }
 
+computer_menu = {
+  { "restart", function() awful.util.spawn_with_shell("shutdown -r now") end },
+  { "shutdown", function() awful.util.spawn_with_shell("shutdown now") end }
+}
+
 mymainmenu = awful.menu({
   items = {
     { "awesome", myawesomemenu, beautiful.awesome_icon },
+    { "computer", computer_menu },
     { "open terminal", terminal }
   }
 })
