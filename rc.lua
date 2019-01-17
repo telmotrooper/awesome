@@ -18,6 +18,7 @@ local hotkeys_popup = require("awful.hotkeys_popup").widget
 
 -- Other imports
 local xrandr = require("xrandr")
+local calendar = require("calendar")
 
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
@@ -133,6 +134,9 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 -- Wibar
 -- Create a textclock widget
 mytextclock = wibox.widget.textclock()
+
+-- Attach calendar to textclock
+calendar({}):attach(mytextclock)
 
 local my_table = awful.util.table or gears.table
 
