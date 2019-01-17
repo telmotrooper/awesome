@@ -99,8 +99,8 @@ theme.layout_cornerse   = current_dir .. "/layouts/cornerse.png"
 theme.titlebar_close_button_focus  = current_dir .. "/titlebar/close_focus.png"
 theme.titlebar_close_button_normal = current_dir .. "/titlebar/close_normal.png"
 
-theme.titlebar_minimize_button_normal = themes_path .. "default/titlebar/minimize_normal.png"
-theme.titlebar_minimize_button_focus  = themes_path .. "default/titlebar/minimize_focus.png"
+theme.titlebar_minimize_button_normal = current_dir .. "titlebar/minimize_normal.png"
+theme.titlebar_minimize_button_focus  = current_dir .. "/titlebar/minimize_focus.png"
 
 theme.titlebar_ontop_button_focus_active  = current_dir .. "/titlebar/ontop_focus_active.png"
 theme.titlebar_ontop_button_normal_active = current_dir .. "/titlebar/ontop_normal_active.png"
