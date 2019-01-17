@@ -623,6 +623,16 @@ client.connect_signal("manage", function (c)
     end
 end)
 
+-- Allow "rofi" to unminimize windows/clients
+client.connect_signal("request::activate",
+  function(c, context, hints)
+    if c.minimized then
+      c.minimized = false
+    end
+    awful.ewmh.activate(c, context, hints)
+  end
+)
+
 -- Add a titlebar if titlebars_enabled is set to true in the rules.
 client.connect_signal("request::titlebars", function(c)
     -- buttons for the titlebar
