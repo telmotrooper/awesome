@@ -19,7 +19,7 @@ local hotkeys_popup = require("awful.hotkeys_popup").widget
 -- Other imports
 local xrandr = require("xrandr")
 local calendar = require("calendar")
-local layout_indicator = require("keyboard-layout-indicator")
+local layout_indicator = require("keyboard")
 
 keyboard = layout_indicator({
   layouts = {
@@ -69,6 +69,9 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init("~/.config/awesome/zenburn/theme.lua")
+
+-- Remove text from task / window names
+-- beautiful.tasklist_disable_task_name = true
 
 beautiful.useless_gap = 5
 
