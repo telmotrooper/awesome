@@ -19,6 +19,16 @@ local hotkeys_popup = require("awful.hotkeys_popup").widget
 -- Other imports
 local xrandr = require("xrandr")
 local calendar = require("calendar")
+local layout_indicator = require("keyboard-layout-indicator")
+
+keyboard = layout_indicator({
+  layouts = {
+      {name="br",  layout="br",  variant=nil},
+      {name="us",  layout="us",  variant=nil}
+  }
+})
+
+
 
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
@@ -135,7 +145,7 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 -- Create a textclock widget
 mytextclock = wibox.widget.textclock()
 
--- Attach calendar to textclock
+-- Attach calendar to textclockR
 calendar({}):attach(mytextclock)
 
 local my_table = awful.util.table or gears.table
@@ -263,8 +273,8 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
+            keyboard,
             volumewidget,
-            mykeyboardlayout,
             wibox.widget.systray(),
             mytextclock,
             s.mylayoutbox,
@@ -285,40 +295,53 @@ root.buttons(gears.table.join(
 globalkeys = gears.table.join(
 
     -- Custom key bindings
+    awful.key({ "Mod1" }, "space",
+      function()
+        keyboard:next()
+      end
+    ),
+
     awful.key({ modkey }, "Pause",
       function()
         xrandr.xrandr()
-      end),
+      end
+    ),
 
     awful.key({ }, "Print",
       function()
         awful.util.spawn_with_shell("scrot ~/Pictures/screenshot_at_%d-%m-%y_%H:%M:%S.png")
-      end),
+      end
+    ),
 
     awful.key({ "Mod1", }, "Tab", -- Alt + Tab
       function ()
         awful.util.spawn_with_shell("rofi -show window")
-      end),
+      end
+    ),
     
     awful.key({ "Mod1" }, "#68", -- Alt + F2
       function ()
         awful.screen.focused().mypromptbox:run()
-      end),
+      end
+    ),
 
     awful.key({ "Control", "Mod1" }, "t", -- Ctrl + Alt + T
       function ()
         awful.spawn(terminal)
-      end),
+      end
+    ),
 
     awful.key({ modkey }, "#63", -- Ctrl + /
       function ()
         awful.tag.incmwfact( 0.05)
-      end),
+      end
+    ),
 
     awful.key({ modkey }, "#106", -- Ctrl + *
       function ()
         awful.tag.incmwfact(-0.05)
-      end),
+      end
+    ),
     --
 
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
