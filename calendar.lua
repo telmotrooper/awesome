@@ -158,10 +158,10 @@ function calendar:attach(widget)
     widget:connect_signal('mouse::enter', function() self:show() end)
     widget:connect_signal('mouse::leave', function() self:hide() end)
     widget:buttons(awful.util.table.join(
-        awful.button({         }, 1, function() self:switch( -1) end),
-        awful.button({         }, 3, function() self:switch(  1) end),
-        awful.button({         }, 4, function() self:switch( -1) end),
-        awful.button({         }, 5, function() self:switch(  1) end),
+        awful.button({         }, 1, function() self:switch(  1) end),
+        awful.button({         }, 3, function() self:switch( -1) end),
+        awful.button({         }, 4, function() self:switch(  1) end),
+        awful.button({         }, 5, function() self:switch( -1) end),
         awful.button({ 'Shift' }, 1, function() self:switch(-12) end),
         awful.button({ 'Shift' }, 3, function() self:switch( 12) end),
         awful.button({ 'Shift' }, 4, function() self:switch(-12) end),
