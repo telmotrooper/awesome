@@ -130,7 +130,7 @@ computer_menu = {
   { "shutdown", function() awful.util.spawn_with_shell("shutdown now") end }
 }
 
-mymainmenu = awful.menu({
+mouse_menu = awful.menu({
   items = {
     { "awesome", awesome_menu, beautiful.awesome_icon },
     { "computer", computer_menu },
@@ -140,9 +140,6 @@ mymainmenu = awful.menu({
 
 -- Menubar configuration
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
-
--- Keyboard map indicator and switcher
-mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- Wibar
 -- Create a textclock widget
@@ -290,7 +287,7 @@ end)
 
 -- {{{ Mouse bindings
 root.buttons(gears.table.join(
-    awful.button({ }, 3, function () mymainmenu:toggle() end)
+    awful.button({ }, 3, function () mouse_menu:toggle() end)
     -- awful.button({ }, 4, awful.tag.viewnext),
     -- awful.button({ }, 5, awful.tag.viewprev)
 ))
@@ -300,7 +297,7 @@ root.buttons(gears.table.join(
 globalkeys = gears.table.join(
 
     -- Custom key bindings
-    awful.key({ "Mod1" }, "space",
+    awful.key({ "Mod4" }, "space",
       function()
         keyboard:next()
       end
@@ -342,9 +339,21 @@ globalkeys = gears.table.join(
       end
     ),
 
+    awful.key({ modkey }, "#20", -- Ctrl + "-"
+    function ()
+      awful.tag.incmwfact(-0.05)
+    end
+    ),
+
     awful.key({ modkey }, "#106", -- Ctrl + *
       function ()
         awful.tag.incmwfact(-0.05)
+      end
+    ),
+
+    awful.key({ modkey }, "#21", -- Ctrl + "+"
+      function ()
+        awful.tag.incmwfact(0.05)
       end
     ),
     --
@@ -370,7 +379,7 @@ globalkeys = gears.table.join(
         end,
         {description = "focus previous by index", group = "client"}
     ),
-    awful.key({ modkey,           }, "w", function () mymainmenu:show() end,
+    awful.key({ modkey,           }, "w", function () mouse_menu:show() end,
               {description = "show main menu", group = "awesome"}),
 
     -- Layout manipulation
@@ -413,8 +422,8 @@ globalkeys = gears.table.join(
               {description = "increase the number of columns", group = "layout"}),
     awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1, nil, true)    end,
               {description = "decrease the number of columns", group = "layout"}),
-    awful.key({ modkey,           }, "space", function () awful.layout.inc( 1)                end,
-              {description = "select next", group = "layout"}),
+--    awful.key({ modkey,           }, "space", function () awful.layout.inc( 1)                end,
+--              {description = "select next", group = "layout"}),
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
               {description = "select previous", group = "layout"}),
 
