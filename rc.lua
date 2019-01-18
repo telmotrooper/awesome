@@ -120,7 +120,7 @@ end
 -- Menu
 -- Create a launcher widget and a main menu
 awesome_menu = {
-   { "hotkeys", function() return false, hotkeys_popup.show_help end },
+   { "help", function() return false, hotkeys_popup.show_help end },
    { "restart", awesome.restart },
 }
 
